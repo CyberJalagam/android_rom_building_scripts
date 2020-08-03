@@ -77,7 +77,7 @@ read BRANCH_VT
 
 git clone "$VT_LINK" -b "$BRANCH_VT" vendor/oppo/CPH1859;
 
-cd ../;
+cd ../easy_rom_compiling_script/;
 cp -v build.sh ../"$ROM_NAME"
 
 echo "Everything is setup. nano the build.sh according to the rom and use the command- "
