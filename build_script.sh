@@ -19,6 +19,8 @@ DT_LINK=""
 BRANCH_DT=""
 VT_LINK=""
 BRANCH_VT=""
+CODENAME=""
+BRAND_NAME=""
 
 sudo apt-get update;
 sudo apt-get -y upgrade;
@@ -67,7 +69,13 @@ read DT_LINK
 echo "Enter the branch of DT: "
 read BRANCH_DT
 
-git clone "$DT_LINK" -b "$BRANCH_DT" device/oppo/CPH1859;
+echo "Enter codename: " 
+read CODENAME
+
+echo "Enter Brand name: " 
+read BRAND_NAME
+
+git clone "$DT_LINK" -b "$BRANCH_DT" device/"$BRAND_NAME"/"$CODENAME";
 
 echo "Enter the link of your Vendor Tree: "
 read VT_LINK
@@ -75,7 +83,7 @@ read VT_LINK
 echo "Enter the branch of VT: "
 read BRANCH_VT
 
-git clone "$VT_LINK" -b "$BRANCH_VT" vendor/oppo/CPH1859;
+git clone "$VT_LINK" -b "$BRANCH_VT" vendor/"$BRAND_NAME"/"$CODENAME";
 
 cd ../easy_rom_compiling_script/;
 cp -v build.sh ../"$ROM_NAME"
