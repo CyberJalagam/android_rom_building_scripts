@@ -4,7 +4,7 @@ run the script
 
 ```
 chmod +x build_script.sh
-./ <script_name>
+./<script_name>
 ```
 and boom!
 easy rom compiling
