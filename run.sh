@@ -64,6 +64,7 @@ then
 fi
   echo -e "\nWARNING! This is deprecated and is not adviced to use, The script is not stable"
   sleep 10
+  chmod +X full_build_script.sh
   bash full_build_script.sh
   read -p "Please press Y to setup gdrive upload configuration, Press any other key to proceed without gdrive  " -n 1 -r
   if [[ ! $REPLY =~ ^[Yy]$ ]]
