@@ -84,9 +84,20 @@ echo "Enter the branch of VT: "
 read BRANCH_VT
 
 git clone "$VT_LINK" -b "$BRANCH_VT" vendor/"$BRAND_NAME"/"$CODENAME";
+read -p "Do you use a low spec server? Please press Y to proceed, press any other key for systems with decent specs" -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    cd ../easy_rom_compiling_script/;
+    cp -v build_2.sh ../"$ROM_NAME"
+    echo "Everything is setup. nano the build_2.sh according to the rom and device, then use the command- "
+    echo "screen -LS rom bash build_2.sh "
+    exit
+fi
 
-cd ../easy_rom_compiling_script/;
-cp -v build.sh ../"$ROM_NAME"
+  cd ../easy_rom_compiling_script/;
+  cp -v build.sh ../"$ROM_NAME"
 
-echo "Everything is setup. nano the build.sh according to the rom and use the command- "
-echo "screen -LS rom bash build.sh "
+  echo "Everything is setup. nano the build.sh according to the rom and use the command- "
+  echo "screen -LS rom bash build.sh "
+  exit
