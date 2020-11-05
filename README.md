@@ -9,3 +9,36 @@ chmod +x run.sh
 ```
 and boom!
 easy rom compiling
+
+<h1 align="center">Arduino Projects</h1>
+<p align="center"><i>A collection of awesome Arduino projects for beginners.</i></p>
+<div align="center">
+  <a href="https://github.com/CyberJalagam/android_rom_building_scripts/stargazers"><img src="https://img.shields.io/github/stars/CyberJalagam/android_rom_building_scripts" alt="Stars Badge"/></a>
+<a href="https://github.com/CyberJalagam/android_rom_building_scripts/network/members"><img src="https://img.shields.io/github/forks/CyberJalagam/android_rom_building_scripts" alt="Forks Badge"/></a>
+<a href="https://github.com/CyberJalagam/android_rom_building_scripts/pulls"><img src="https://img.shields.io/github/issues-pr/CyberJalagam/android_rom_building_scripts" alt="Pull Requests Badge"/></a>
+<a href="https://github.com/CyberJalagam/android_rom_building_scripts/issues"><img src="https://img.shields.io/github/issues/CyberJalagam/android_rom_building_scripts" alt="Issues Badge"/></a>
+<a href="https://github.com/CyberJalagam/android_rom_building_scripts/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/CyberJalagam/android_rom_building_scripts?color=2b9348"></a>
+<a href="https://github.com/CyberJalagam/android_rom_building_scripts/blob/main/LICENSE"><img src="https://img.shields.io/github/license/CyberJalagam/android_rom_building_scripts?color=2b9348" alt="License Badge"/></a>
+</div>
+<br>
+<p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
+<br>
+
+# INSTALLATION
+```
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts
+cd scripts
+chmod +x run.sh
+./run.sh
+```
+
+If you like this Repo, Please click the :star:
+
+# Contribute
+
+Contributions are always welcome! Please create a PR to add Github Profile.
+
+## :man_astronaut: Show your support
+
+Give a ⭐️ if this project helped you!
+
