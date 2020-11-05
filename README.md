@@ -1,15 +1,3 @@
-# THIS MAKES YOUR LIFE EASIER
-STATUS: NOT-TESTED
-
-run the script
-
-```
-chmod +x run.sh
-./run.sh
-```
-and boom!
-easy rom compiling
-
 <h1 align="center">Arduino Projects</h1>
 <p align="center"><i>A collection of awesome Arduino projects for beginners.</i></p>
 <div align="center">
@@ -24,6 +12,7 @@ easy rom compiling
 <p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
 <br>
 
+# THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
 ```
 git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts
