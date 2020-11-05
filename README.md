@@ -1,5 +1,5 @@
-<h1 align="center">Arduino Projects</h1>
-<p align="center"><i>A collection of awesome Arduino projects for beginners.</i></p>
+<h1 align="center">Android Build Environment Scripts</h1>
+<p align="center"><i>An awesome script for Android Developers.</i></p>
 <div align="center">
   <a href="https://github.com/CyberJalagam/android_rom_building_scripts/stargazers"><img src="https://img.shields.io/github/stars/CyberJalagam/android_rom_building_scripts" alt="Stars Badge"/></a>
 <a href="https://github.com/CyberJalagam/android_rom_building_scripts/network/members"><img src="https://img.shields.io/github/forks/CyberJalagam/android_rom_building_scripts" alt="Forks Badge"/></a>
