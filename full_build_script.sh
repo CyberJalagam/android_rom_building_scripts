@@ -51,7 +51,7 @@ read ROM_MANIFEST
 echo "Enter the branch: "
 read BRANCH_ROM
 
-repo init -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
+repo init --depth=1 -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
 
 echo " Syncing repo. This may take a while depending on your internet speed : "
 
