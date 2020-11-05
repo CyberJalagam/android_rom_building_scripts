@@ -14,11 +14,9 @@
 
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
+Easy to use, Simply copy paste the whole line mentioned below and see the megik 
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts
-cd scripts
-chmod +x run.sh
-./run.sh
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x run.sh && ./run.sh
 ```
 
 If you like this Repo, Please click the :star:
