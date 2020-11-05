@@ -12,6 +12,8 @@
 <p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
 <br>
 
+STATUS: UNSTABLE
+
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
 Easy to use, Simply copy paste the whole line mentioned below and see the megik 
