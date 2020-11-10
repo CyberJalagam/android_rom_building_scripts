@@ -9,7 +9,7 @@ echo "Enter GitHub Username: "
 read GIT_USERNAME
 
 echo "Enter GitHub Email: "
-read GIT_EMAIL
+read GIT_MAIL
 
 # Username
 echo -e "\n================== Adding Username ==================\n"
