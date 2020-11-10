@@ -12,13 +12,14 @@
 <p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
 <br>
 
-STATUS: UNSTABLE
+STATUS: STABLE-ish
 
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
-Easy to use, Simply copy paste the whole line mentioned below and see the megik 
+Easy to use,
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x run.sh && ./run.sh
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x env.sh && chmod +x git.sh && chmod +x full_build_script.sh && chmod +x gdrive.sh
+./<script_name.sh>
 ```
 
 If you like this Repo, Please click the :star:

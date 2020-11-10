@@ -1,3 +1,3 @@
 source build/envsetup.sh
 lunch <build>_<codename>-userdebug
-mka bacon -j8
+mka bacon -j$(nproc --all)
