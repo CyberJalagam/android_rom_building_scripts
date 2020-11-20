@@ -16,6 +16,11 @@ STATUS: STABLE-ish
 
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
+
+Easy copy paste- basic requirements for all universal rom builders,
+```
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x env.sh && chmod +x git.sh && chmod +x full_build_script.sh && chmod +x gdrive.sh && ./git.sh && ./env.sh && ./gdrive.sh
+```
 Easy to use,
 ```
 git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x env.sh && chmod +x git.sh && chmod +x full_build_script.sh && chmod +x gdrive.sh
