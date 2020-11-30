@@ -13,7 +13,7 @@ read DEVICE_TREE_BRANCH
 
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
-git clone "$DEVICE_TREE" -b "$DEVICE_TREE_BRANCH" device/oppo/CPH18559
+git clone "$DEVICE_TREE" -b "$DEVICE_TREE_BRANCH" device/oppo/CPH1859
 
 # Vendor Tree
 echo -e "\n================== Clonning vendor tree ==================\n"
