@@ -21,7 +21,7 @@ git clone https://github.com/CPH1859/proprietary_vendor_oppo_CPH1859 vendor/oppo
 
 # Kernel Tree
 echo -e "\n================== Clonning kernel tree ==================\n"
-git clone https://github.com/CPH1859/android_kernel_oppo_mt6771 kernel/oppo/CPH1859
+git clone https://github.com/CPH1859/android_kernel_oppo_mt6771 kernel/oppo/mt6771
 echo -e "\n Done!\n"
 
 # Revert an selinux commit
