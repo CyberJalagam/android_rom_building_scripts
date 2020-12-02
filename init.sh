@@ -14,13 +14,16 @@ VENDOR_TREE_BRANCH=""
 KERNEL_TREE=""
 KERNEL_TREE_BRANCH=""
 
-
+CHIPSET=""
 
 echo "Enter codename: "
 read CODENAME
 
 echo "Enter Brand: "
 read BRAND
+
+echo "Enter chipset (for kernel path): "
+read CHIPSET
 
 echo "Enter Device tree link: "
 read DEVICE_TREE
@@ -50,6 +53,6 @@ git clone "$VENDOR_TREE" -b "$VENDOR_TREE_BRANCH" vendor/"$BRAND"/"$CODENAME"
 
 # Kernel Tree
 echo -e "\n================== Clonning kernel tree ==================\n"
-git clone "$KERNEL_TREE" -b "$KERNEL_TREE_BRANCH" kernel/"$BRAND"/"$CODENAME"
+git clone "$KERNEL_TREE" -b "$KERNEL_TREE_BRANCH" kernel/"$BRAND"/"$CHIPSET"
 
 echo -e "\n Done!\n"
