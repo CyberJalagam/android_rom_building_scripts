@@ -17,12 +17,9 @@ echo -e "\n Added your email!\n"
 echo -e "\n==================   List Settings   ==================\n"
 git config --list
 
-wget https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh
-bash android_build_env.sh
-export USE_CCACHE=1
-export USE_CCACHE_EXEC=$(command -v ccache)
-ccache -M 50G
-export ANDROID_JACK_VM_ARGS="-Xmx15g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/env.sh
+chmod +x env.sh
+bash env.sh
 
 # Lets setup the rom
 cd && mkdir sakura
