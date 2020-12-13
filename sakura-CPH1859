@@ -22,7 +22,7 @@ chmod +x env.sh
 bash env.sh
 
 # Lets setup the rom
-cd && mkdir sakura
+cd && mkdir sakura && cd sakura
 repo init -u git://github.com/ProjectSakura/android.git -b 11
 repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j8
 
@@ -39,9 +39,7 @@ cd ../../
 # THIS IS TEMPORARY
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
-git clone https://github.com/CPH1859/android_device_oppo_CPH1859 -b lineage-18.0-ims device/oppo/CPH1859
-cd device/oppo/CPH1859
-git fetch https://github.com/CyberJalagam/ProjectSakura_CPH1859 eleven && git cherry-pick 35e6655c5e0526644e54d3595cc5923de0a04758 && git cherry-pick 8f34cc23293b5456ca989de4b1de7f05422593fd
+git clone https://github.com/CyberJalagam/ProjectSakura_CPH1859 -b eleven-ims device/oppo/CPH1859
 cd ../../../
 # THIS IS TEMPORARY
 
