@@ -12,7 +12,7 @@
 <p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
 <br>
 
-STATUS: STABLE-ish
+STATUS: WIP
 
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION
