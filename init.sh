@@ -1,6 +1,23 @@
 #!/bin/bash
+# 
+# Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
-# Script to configure device
+#            An Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
 DEVICE_TREE=""
 DEVICE_TREE_BRANCH=""
@@ -15,6 +32,11 @@ KERNEL_TREE=""
 KERNEL_TREE_BRANCH=""
 
 CHIPSET=""
+ROM_DIR=""
+
+echo "Enter full rom directory: "
+echo "eg, /home/cyberjalagam/potato"
+read ROM_DIR
 
 echo "Enter codename: "
 read CODENAME
@@ -43,6 +65,8 @@ read KERNEL_TREE
 echo "Enter Kernel tree branch: "
 read KERNEL_TREE_BRANCH
 
+cd "$ROM_DIR"
+
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
 git clone "$DEVICE_TREE" -b "$DEVICE_TREE_BRANCH" device/"$BRAND"/"$CODENAME"
@@ -56,3 +80,4 @@ echo -e "\n================== Clonning kernel tree ==================\n"
 git clone "$KERNEL_TREE" -b "$KERNEL_TREE_BRANCH" kernel/"$BRAND"/"$CHIPSET"
 
 echo -e "\n Done!\n"
+echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
