@@ -49,6 +49,10 @@ echo -e "\n================== Clonning kernel tree ==================\n"
 git clone https://github.com/CPH1859/android_kernel_oppo_mt6771 kernel/oppo/mt6771
 echo -e "\n Done!\n"
 
+# Clone some oss telephony repos
+git clone https://github.com/PeterCxy/vendor_mediatek_hardware_interfaces vendor/mediatek/hardware/interfaces
+git clone https://github.com/CPH1859/vendor_mediatek_hardware_telephony-ext vendor/mediatek/hardware/telephony-ext
+
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
 cd external/selinux && git revert --no-edit `git log --oneline | grep "Make an unknown permission an error in CIL" | cut -d' ' -f 1`
