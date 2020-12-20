@@ -20,8 +20,14 @@ STATUS: STABLE
 
 Easy to use,
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && chmod +x build.sh && build.sh
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x build.sh && bash build.sh
 ```
+
+For peeps using screen while compiling,
+```
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x build.sh && screen -LS script bash build.sh
+```
+
 
 If you like this Repo, Please click the :star:
 
