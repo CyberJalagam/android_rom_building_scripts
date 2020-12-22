@@ -39,10 +39,8 @@ elif [ $1 -eq 2 ]
 then	
 	chmod +x env.sh;
         chmod +x git.sh;
-        chmod +x gdrive.sh;
         ./git.sh;
         ./env.sh;
-        ./gdrive list;
         start;
         
 elif [ $1 -eq 3 ]
