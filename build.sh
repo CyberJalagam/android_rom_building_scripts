@@ -35,95 +35,92 @@ then
 	chmod +x env.sh;
 	bash env.sh;
 	start;
+
 elif [ $1 -eq 2 ]
-then	
+then
 	chmod +x env.sh;
         chmod +x git.sh;
-        chmod +x gdrive.sh;
         ./git.sh;
         ./env.sh;
-        ./gdrive list;
         start;
-        
+
 elif [ $1 -eq 3 ]
 then
 	chmod +x zip-CPH1859.sh;
 	bash zip-CPH1859.sh;
 	start;
+
 elif [ $1 -eq 4 ]
 then
-	chmod +x gdrive.sh;
-	./gdrive list;
-	start;
+        chmod +x bashupload.sh;
+        bash bashupload.sh;
+        start;
+
 elif [ $1 -eq 5 ]
-then
-	echo "Enter the full directory of ROM"
-	echo "eg, /home/cyberjalagam/potato/out/target/product/CPH1859/potato-28289-CPH1859.zip"
-	read ROM_ZIP_DIR;
-	./gdrive upload "$ROM_ZIP_DIR";
-	start;
-elif [ $1 -eq 6 ]
 then
 	chmod +x init-CPH1859.sh;
 	bash init-CPH1859.sh;
 	start;
-elif [ $1 -eq 7 ]
+
+elif [ $1 -eq 6 ]
 then
 	chmod +x volte.sh;
 	bash volte.sh;
 	start;
-elif [ $1 -eq 8 ]
+
+elif [ $1 -eq 7 ]
 then
 	chmod +x git.sh;
 	bash git.sh;
 	start;
-elif [ $1 -eq 9 ]
+
+elif [ $1 -eq 8 ]
 then
 	chmod +x full_build_script.sh;
 	bash full_build_script.sh;
 	start;
-	
-elif [ $1 -eq 10 ]
+
+elif [ $1 -eq 9 ]
 then
        chmod +x build_low_spec.sh;
        bash build_low_spec.sh;
        start;
 
-elif [ $1 -eq 11 ]
-then 
+elif [ $1 -eq 10 ]
+then
        chmod +x build_high_spec.sh;
        bash build_high_spec.sh;
        start;
-       
-elif [ $1 -eq 12 ]
-then 
+
+elif [ $1 -eq 11 ]
+then
        chmod +x sakura-CPH1859.sh;
        bash sakura-CPH1859.sh;
        start;
-           
-elif [ $1 -eq 13 ]
-then 
+
+elif [ $1 -eq 12 ]
+then
        chmod +x sakura-RMX1831.sh;
        bash sakura-RMX1831.sh;
        start;
-elif [ $1 -eq 14 ]
-then 
+elif [ $1 -eq 13 ]
+then
        echo "Type in the full directory of rom folder";
        echo "eg, /home/cyberjalagam/sakura";
        read ROM_DIR;
        cat "$ROM_DIR"/out/error.log;
        echo "====================================================================";
        echo "Error link:";
-       cat "$ROM_DIR"/out/error.log | curl -F 'f:1=<-' ix.io;   	
+       cat "$ROM_DIR"/out/error.log | curl -F 'f:1=<-' ix.io;
        start;
-       
-elif [ $1 -eq 15 ]
-then 
+
+elif [ $1 -eq 14 ]
+then
        chmod +x init.sh;
        bash init.sh;
        start;
-              
-elif [ $1 -eq 16 ]
+
+elif [ $1 -eq 15 ]
 then
 	exit;
 fi
@@ -141,19 +138,18 @@ echo -e "${YELLOW}"
 echo "1  -- Build ENV necessary packages"
 echo "2  -- All env essentials- env, gdrive and git"
 echo "3  -- Replace boot for CPH1859"
-echo "4  -- Setup gdrive to upload rom"
-echo "5  -- Upload rom to gdrive"
-echo "6  -- Initialize device configuration for CPH1859"
-echo "7  -- Initialize VoLTE changes for MediaTek"
-echo "8  -- Setup git"
-echo "9  -- Full rom building script"
-echo "10 -- Build with low specs"
-echo "11 -- Build with normal specs"
-echo "12 -- Build ProjectSakura for CPH1859"
-echo "13 -- Build ProjectSakura for RMX1831"
-echo "14 -- Show build error"
-echo "15 -- Initialize device repos"
-echo "16 -- Exit"
+echo "4  -- Upload rom to bashupload"
+echo "5  -- Initialize device configuration for CPH1859"
+echo "6  -- Initialize VoLTE changes for MediaTek"
+echo "7  -- Setup git"
+echo "8  -- Full rom building script"
+echo "9  -- Build with low specs"
+echo "10  -- Build with normal specs"
+echo "11 -- Build ProjectSakura for CPH1859"
+echo "12 -- Build ProjectSakura for RMX1831"
+echo "13 -- Show build error"
+echo "14 -- Initialize device repos"
+echo "15 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;
