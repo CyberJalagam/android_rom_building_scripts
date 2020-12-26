@@ -103,6 +103,7 @@ then
        chmod +x sakura-RMX1831.sh;
        bash sakura-RMX1831.sh;
        start;
+       
 elif [ $1 -eq 13 ]
 then
        echo "Type in the full directory of rom folder";
@@ -144,7 +145,7 @@ echo "6  -- Initialize VoLTE changes for MediaTek"
 echo "7  -- Setup git"
 echo "8  -- Full rom building script"
 echo "9  -- Build with low specs"
-echo "10  -- Build with normal specs"
+echo "10 -- Build with normal specs"
 echo "11 -- Build ProjectSakura for CPH1859"
 echo "12 -- Build ProjectSakura for RMX1831"
 echo "13 -- Show build error"

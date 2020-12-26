@@ -34,7 +34,7 @@ cd frameworks/base && git fetch https://github.com/Corvus-R/android_frameworks_b
 
 cd ../../
 
-cd framworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
+cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
 
 cd ../ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
