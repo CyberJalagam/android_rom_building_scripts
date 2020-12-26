@@ -23,6 +23,7 @@ ROM_DIR=""
 ROM_NAME=""
 
 echo "enter full rom directory"
+echo "eg, /home/cyberjalagam/sakura"
 read ROM_DIR
 
 cd "$ROM_DIR"/out/target/product/CPH1859
