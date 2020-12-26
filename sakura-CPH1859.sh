@@ -58,7 +58,7 @@ cd ../../../../
 # THIS IS TEMPORARY
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
-git clone https://github.com/CyberJalagam/ProjectSakura_CPH1859 -b eleven-ims device/oppo/CPH1859
+git clone https://github.com/CyberJalagam/device_oppo_CPH1859 -b C.50 device/oppo/CPH1859
 cd ../../../
 # THIS IS TEMPORARY
 
@@ -66,7 +66,7 @@ cp -r ../sakura-priv vendor
 
 # Vendor Tree
 echo -e "\n================== Clonning vendor tree ==================\n"
-git clone https://github.com/CPH1859/proprietary_vendor_oppo_CPH1859 vendor/oppo/CPH1859
+git clone https://github.com/CyberJalagam/vendor_oppo_CPH1859 -b C.50-test vendor/oppo/CPH1859
 
 # Kernel Tree
 echo -e "\n================== Clonning kernel tree ==================\n"
