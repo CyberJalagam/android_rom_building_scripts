@@ -49,11 +49,11 @@ repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-
 echo -e "\n======================== SeFix ============================\n"
 cd external/selinux && git revert --no-edit `git log --oneline | grep "Make an unknown permission an error in CIL" | cut -d' ' -f 1`
 
-# Add some changes to source for hotspot fix
+# Add some changes to source for hotspot and bholte fix
 cd ../../ && cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
 cd ../../../../ && cd frameworks/base && git fetch https://github.com/PotatoProject/frameworks_base dumaloo-release && git cherry-pick 5db62c3223a698657acafdefda323baa5e773d4c
-cd ../../
-
+cd ../../ && cd frameworks/opt/net/ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
+cd ../../../../
 
 # THIS IS TEMPORARY
 # Device tree
