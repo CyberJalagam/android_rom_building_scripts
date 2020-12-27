@@ -37,6 +37,9 @@ echo "enter codename"
 read CODENAME
 
 cd "$ROM_DIR_HEHE"
+cd build/soong && git fetch https://github.com/nparashar150/android_build_soong && git cherry-pick c8ba7af59acda55a16835727d1d351b8d58a5ca4
+cd ../
+cd ../
 source build/envsetup.sh
 lunch "$ROM_NAME"_"$CODENAME"-userdebug
 mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && mka bacon -j$(nproc --all)
