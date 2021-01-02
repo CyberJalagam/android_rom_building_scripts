@@ -48,25 +48,18 @@ repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
 cd external/selinux && git revert --no-edit `git log --oneline | grep "Make an unknown permission an error in CIL" | cut -d' ' -f 1`
+cd ../../
 
-# Add some changes to source for hotspot and bholte fix
-cd ../../ && cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
-cd ../../../../ && cd frameworks/base && git fetch https://github.com/PotatoProject/frameworks_base dumaloo-release && git cherry-pick 5db62c3223a698657acafdefda323baa5e773d4c
-cd ../../ && cd frameworks/opt/net/ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
-cd ../../../../
 
-# THIS IS TEMPORARY
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
-git clone https://github.com/CyberJalagam/device_oppo_CPH1859 -b C.50 device/oppo/CPH1859
-cd ../../../
-# THIS IS TEMPORARY
+git clone https://github.com/CPH1859/android_device_oppo_CPH1859 -b test-2 device/oppo/CPH1859
 
 cp -r ../sakura-priv vendor
 
 # Vendor Tree
 echo -e "\n================== Clonning vendor tree ==================\n"
-git clone https://github.com/CyberJalagam/vendor_oppo_CPH1859 -b C.50-test vendor/oppo/CPH1859
+git clone https://github.com/CPH1859/proprietary_vendor_oppo_CPH1859 vendor/oppo/CPH1859
 
 # Kernel Tree
 echo -e "\n================== Clonning kernel tree ==================\n"
@@ -78,6 +71,7 @@ lunch lineage_CPH1859-userdebug
 export SAKURA_MAINTAINER=JAISHNAVPRASAD
 export SKIP_ABI_CHECKS=true
 export SAKURA_OFFICIAL=true
+export TARGET_USES_BLUR=true
 export LAWNCHAIR_OUTPUT=true
 make bacon -j8
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
