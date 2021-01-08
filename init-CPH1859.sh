@@ -55,5 +55,6 @@ git clone https://github.com/CPH1859/vendor_mediatek_hardware_telephony-ext vend
 
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
-cd external/selinux && git revert --no-edit `git log --oneline | grep "Make an unknown permission an error in CIL" | cut -d' ' -f 1`
+cp -v ../scripts/patches/Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch external/selinux
+cd external/selinux && git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

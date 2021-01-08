@@ -1,0 +1,226 @@
+From a6b2db1a5875fc7156ef7736bd5f3075e132914a Mon Sep 17 00:00:00 2001
+From: Kshitij Gupta <kshitijgm@gmail.com>
+Date: Sun, 21 Jun 2020 10:36:36 +0000
+Subject: [PATCH] wifi: Add StaState API
+
+Change-Id: I1f51ae6189a909132f566ebddfb6f9cbdf9acb2d
+---
+ .../android/server/wifi/ActiveModeWarden.java |  3 +
+ .../android/server/wifi/BaseWifiService.java  | 12 ++++
+ .../com/android/server/wifi/WifiInjector.java |  7 ++
+ .../android/server/wifi/WifiServiceImpl.java  | 29 ++++++++
+ .../server/wifi/WifiStaStateNotifier.java     | 72 +++++++++++++++++++
+ 5 files changed, 123 insertions(+)
+ create mode 100644 service/java/com/android/server/wifi/WifiStaStateNotifier.java
+
+diff --git a/service/java/com/android/server/wifi/ActiveModeWarden.java b/service/java/com/android/server/wifi/ActiveModeWarden.java
+index cf54e328b..e370a8c02 100644
+--- a/service/java/com/android/server/wifi/ActiveModeWarden.java
++++ b/service/java/com/android/server/wifi/ActiveModeWarden.java
+@@ -966,4 +966,7 @@ public boolean processMessageFiltered(Message msg) {
+             }
+         }
+     }
++
++    public void registerStaEventCallback() {}
++    public void unregisterStaEventCallback() {}
+ }
+diff --git a/service/java/com/android/server/wifi/BaseWifiService.java b/service/java/com/android/server/wifi/BaseWifiService.java
+index 7614cf6eb..9e2f93561 100644
+--- a/service/java/com/android/server/wifi/BaseWifiService.java
++++ b/service/java/com/android/server/wifi/BaseWifiService.java
+@@ -27,6 +27,7 @@
+ import android.net.wifi.IOnWifiUsabilityStatsListener;
+ import android.net.wifi.IScanResultsCallback;
+ import android.net.wifi.ISoftApCallback;
++import android.net.wifi.IStaStateCallback;
+ import android.net.wifi.ISuggestionConnectionStatusListener;
+ import android.net.wifi.ITrafficStateCallback;
+ import android.net.wifi.ITxPacketCountListener;
+@@ -677,4 +678,15 @@ public void setAutoWakeupEnabled(boolean enable) {
+     public boolean isAutoWakeupEnabled() {
+         throw new UnsupportedOperationException();
+     }
++
++    @Override
++    public void registerStaStateCallback(
++            IBinder binder, IStaStateCallback callback, int callbackIdentifier) {
++        throw new UnsupportedOperationException();
++    }
++
++    @Override
++    public void unregisterStaStateCallback(int callbackIdentifier) {
++        throw new UnsupportedOperationException();
++    }
+ }
+diff --git a/service/java/com/android/server/wifi/WifiInjector.java b/service/java/com/android/server/wifi/WifiInjector.java
+index 993debba5..5d8d85ae5 100644
+--- a/service/java/com/android/server/wifi/WifiInjector.java
++++ b/service/java/com/android/server/wifi/WifiInjector.java
+@@ -106,6 +106,7 @@
+     private final ScoringParams mScoringParams;
+     private final ClientModeImpl mClientModeImpl;
+     private final ActiveModeWarden mActiveModeWarden;
++    private final WifiStaStateNotifier mWifiStaStateNotifier;
+     private final WifiSettingsStore mSettingsStore;
+     private OpenNetworkNotifier mOpenNetworkNotifier;
+     private final WifiLockManager mLockManager;
+@@ -382,6 +383,8 @@ public WifiInjector(WifiContext context) {
+         mWifiNetworkSelector.registerNetworkNominator(mNetworkSuggestionNominator);
+         mWifiNetworkSelector.registerNetworkNominator(mScoredNetworkNominator);
+ 
++        mWifiStaStateNotifier = new WifiStaStateNotifier(wifiLooper, this);
++
+         mClientModeImpl.start();
+     }
+ 
+@@ -479,6 +482,10 @@ public ActiveModeWarden getActiveModeWarden() {
+         return mActiveModeWarden;
+     }
+ 
++    public WifiStaStateNotifier getWifiStaStateNotifier() {
++        return mWifiStaStateNotifier;
++    }
++
+     public WifiSettingsStore getWifiSettingsStore() {
+         return mSettingsStore;
+     }
+diff --git a/service/java/com/android/server/wifi/WifiServiceImpl.java b/service/java/com/android/server/wifi/WifiServiceImpl.java
+index 5019f54e8..6f88d592d 100644
+--- a/service/java/com/android/server/wifi/WifiServiceImpl.java
++++ b/service/java/com/android/server/wifi/WifiServiceImpl.java
+@@ -60,6 +60,7 @@
+ import android.net.wifi.IScanResultsCallback;
+ import android.net.wifi.ISoftApCallback;
+ import android.net.wifi.ISuggestionConnectionStatusListener;
++import android.net.wifi.IStaStateCallback;
+ import android.net.wifi.ITrafficStateCallback;
+ import android.net.wifi.IWifiConnectedNetworkScorer;
+ import android.net.wifi.ScanResult;
+@@ -188,6 +189,8 @@
+     private final WifiConfigManager mWifiConfigManager;
+     private final PasspointManager mPasspointManager;
+     private final WifiLog mLog;
++    private WifiStaStateNotifier mWifiStaStateNotifier;
++
+     /**
+      * Verbose logging flag. Toggled by developer options.
+      */
+@@ -329,6 +332,7 @@ public WifiServiceImpl(Context context, WifiInjector wifiInjector, AsyncChannel
+         mWifiScoreCard = mWifiInjector.getWifiScoreCard();
+         mMemoryStoreImpl = new MemoryStoreImpl(mContext, mWifiInjector,
+                 mWifiScoreCard,  mWifiInjector.getWifiHealthMonitor());
++        mWifiStaStateNotifier = mWifiInjector.getWifiStaStateNotifier();
+     }
+ 
+     /**
+@@ -3729,6 +3733,31 @@ public void unregisterTrafficStateCallback(int callbackIdentifier) {
+                 mWifiTrafficPoller.removeCallback(callbackIdentifier));
+     }
+ 
++    @Override
++    public void registerStaStateCallback(IBinder binder, IStaStateCallback callback,
++                                                int callbackIdentifier) {
++        if (binder == null) {
++            throw new IllegalArgumentException("Binder must not be null");
++        }
++        if (callback == null) {
++            throw new IllegalArgumentException("Callback must not be null");
++        }
++        if (mVerboseLoggingEnabled) {
++            mLog.info("registerStaStateCallback uid=%").c(Binder.getCallingUid()).flush();
++        }
++        mWifiThreadRunner.post(() ->
++            mWifiStaStateNotifier.addCallback(binder, callback, callbackIdentifier));
++    }
++
++    @Override
++    public void unregisterStaStateCallback(int callbackIdentifier) {
++        if (mVerboseLoggingEnabled) {
++            mLog.info("unregisterStaStateCallback uid=%").c(Binder.getCallingUid()).flush();
++        }
++        mWifiThreadRunner.post(() ->
++            mWifiStaStateNotifier.removeCallback(callbackIdentifier));
++    }
++
+     private long getSupportedFeaturesInternal() {
+         final AsyncChannel channel = mClientModeImplChannel;
+         long supportedFeatureSet = 0L;
+diff --git a/service/java/com/android/server/wifi/WifiStaStateNotifier.java b/service/java/com/android/server/wifi/WifiStaStateNotifier.java
+new file mode 100644
+index 000000000..05dd87993
+--- /dev/null
++++ b/service/java/com/android/server/wifi/WifiStaStateNotifier.java
+@@ -0,0 +1,72 @@
++/*
++ * Copyright (C) 2020 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.server.wifi;
++
++import android.annotation.NonNull;
++import android.net.wifi.IStaStateCallback;
++import android.os.Handler;
++import android.os.IBinder;
++import android.os.Looper;
++import android.os.RemoteException;
++import android.util.Log;
++
++import com.android.server.wifi.util.ExternalCallbackTracker;
++
++
++public class WifiStaStateNotifier {
++    private final ExternalCallbackTracker<IStaStateCallback> mRegisteredCallbacks;
++    private static WifiInjector mWifiInjector;
++    private static final String TAG = "WifiStaStateNotifier";
++    private static final boolean DEBUG = false;
++
++    WifiStaStateNotifier(@NonNull Looper looper, WifiInjector wifiInjector) {
++        mRegisteredCallbacks = new ExternalCallbackTracker<IStaStateCallback>(new Handler(looper));
++        mWifiInjector = wifiInjector;
++    }
++
++    public void addCallback(IBinder binder, IStaStateCallback callback,
++                            int callbackIdentifier) {
++        if (DEBUG) Log.d(TAG, "addCallback");
++        if (mRegisteredCallbacks.getNumCallbacks() > 0) {
++            if (DEBUG) Log.e(TAG, "Failed to add callback, only support single request!");
++            return;
++        }
++        if (!mRegisteredCallbacks.add(binder, callback, callbackIdentifier)) {
++            if (DEBUG) Log.e(TAG, "Failed to add callback");
++            return;
++        }
++        mWifiInjector.getActiveModeWarden().registerStaEventCallback();
++    }
++
++    public void removeCallback(int callbackIdentifier) {
++        if (DEBUG) Log.d(TAG, "removeCallback");
++        mRegisteredCallbacks.remove(callbackIdentifier);
++        mWifiInjector.getActiveModeWarden().unregisterStaEventCallback();
++    }
++
++    public void onStaToBeOff() {
++        if (DEBUG) Log.d(TAG, "onStaToBeOff");
++        for (IStaStateCallback callback : mRegisteredCallbacks.getCallbacks()) {
++            try {
++                if (DEBUG) Log.d(TAG, "callback onStaToBeOff");
++                callback.onStaToBeOff();
++            } catch (RemoteException e) {
++                // do nothing
++            }
++        }
++    }
++}

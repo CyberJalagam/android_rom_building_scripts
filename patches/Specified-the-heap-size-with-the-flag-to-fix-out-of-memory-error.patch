@@ -1,0 +1,22 @@
+From c8ba7af59acda55a16835727d1d351b8d58a5ca4 Mon Sep 17 00:00:00 2001
+From: nparashar150 <nparashar150@gmail.com>
+Date: Thu, 1 Oct 2020 13:42:47 +0530
+Subject: [PATCH] Specified the heap size with the flag to fix out of memory
+ error
+
+---
+ java/droiddoc.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/java/droiddoc.go b/java/droiddoc.go
+index 230b1f0..d829283 100644
+--- a/java/droiddoc.go
++++ b/java/droiddoc.go
+@@ -1468,6 +1468,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
+ 
+ 	cmd.BuiltTool(ctx, "metalava").
+ 		Flag(config.JavacVmFlags).
++        Flag("-J-Xmx3112m").
+ 		FlagWithArg("-encoding ", "UTF-8").
+ 		FlagWithArg("-source ", javaVersion.String()).
+ 		FlagWithRspFileInputList("@", srcs).

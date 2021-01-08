@@ -29,12 +29,15 @@ read ROM_DIR
 cd "$ROM_DIR"
 
 
-# Pick some really necessary commits for IMS to work
-cd frameworks/base && git fetch https://github.com/Corvus-R/android_frameworks_base 11 && git cherry-pick a2c6a3997cdb4598c654b0dea6824286a5a3f727
+# \some really necessary patches for IMS to work
+cp -v ../scripts/patches/WifiManager:Add-StaState-API.patch frameworks/base
+cd frameworks/base && git am WifiManager:Add-StaState-API.patch
 
 cd ../../
 
-cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
+cp -v ../scripts/patches/wifi:Add-StaState-API.patch frameworks/opt/net/wifi
+cd frameworks/opt/net/wifi && git am wifi:Add-StaState-API.patch
 
-cd ../ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
+cp -v ../../../../scripts/patches/Partially-Revert-Remove-references-to-deprecated-device.patch ../ims
+cd ../ims && git am Partially-Revert-Remove-references-to-deprecated-device.patch
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

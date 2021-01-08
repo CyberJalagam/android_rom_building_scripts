@@ -137,7 +137,7 @@ echo "----------------------------------------"
 sleep 2;
 echo -e "${YELLOW}"
 echo "1  -- Build ENV necessary packages"
-echo "2  -- All env essentials- env, gdrive and git"
+echo "2  -- All env essentials- env and git"
 echo "3  -- Replace boot for CPH1859"
 echo "4  -- Upload rom to bashupload"
 echo "5  -- Initialize device configuration for CPH1859"

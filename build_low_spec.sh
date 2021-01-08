@@ -38,8 +38,9 @@ read CODENAME
 
 cd "$ROM_DIR_HEHE"
 
-# Metalava hax
-cd build/soong && git fetch https://github.com/nparashar150/android_build_soong && git cherry-pick c8ba7af59acda55a16835727d1d351b8d58a5ca4
+# Metalava
+cp -v ../scripts/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch build/soong
+cd build/soong && git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
 cd ../../
 #Metalava
 

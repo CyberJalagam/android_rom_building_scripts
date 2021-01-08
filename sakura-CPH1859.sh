@@ -47,8 +47,8 @@ repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-
 
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
-cd external/selinux && git revert --no-edit `git log --oneline | grep "Make an unknown permission an error in CIL" | cut -d' ' -f 1`
-cd ../../
+cp -v ../scripts/patches/Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch external/selinux
+cd external/selinux && git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
 
 
 # Device tree
