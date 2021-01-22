@@ -49,12 +49,9 @@ echo -e "\n================== Clonning kernel tree ==================\n"
 git clone https://github.com/CPH1859/android_kernel_oppo_mt6771 kernel/oppo/mt6771
 echo -e "\n Done!\n"
 
-# Clone some oss telephony repos
-git clone https://github.com/PeterCxy/vendor_mediatek_hardware_interfaces vendor/mediatek/hardware/interfaces
-git clone https://github.com/CPH1859/vendor_mediatek_hardware_telephony-ext vendor/mediatek/hardware/telephony-ext
-
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
-cp -v ../scripts/patches/Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch external/selinux
-cd external/selinux && git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
+cd external/selinux
+wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/Revert-libsepol:Make-an-unknown-permission-an-error-in-CIL.patch
+git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

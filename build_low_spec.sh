@@ -39,8 +39,9 @@ read CODENAME
 cd "$ROM_DIR_HEHE"
 
 # Metalava
-cp -v ../scripts/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch build/soong
-cd build/soong && git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+cd build/soong
+wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
 cd ../../
 #Metalava
 

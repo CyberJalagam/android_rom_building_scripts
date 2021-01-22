@@ -29,15 +29,20 @@ read ROM_DIR
 cd "$ROM_DIR"
 
 
-# \some really necessary patches for IMS to work
-cp -v ../scripts/patches/WifiManager:Add-StaState-API.patch frameworks/base
-cd frameworks/base && git am WifiManager:Add-StaState-API.patch
+# some really necessary patches for IMS to work
+cd frameworks/base
+wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/WifiManager:Add-StaState-API.patch
+git am WifiManager:Add-StaState-API.patch
 
 cd ../../
 
-cp -v ../scripts/patches/wifi:Add-StaState-API.patch frameworks/opt/net/wifi
-cd frameworks/opt/net/wifi && git am wifi:Add-StaState-API.patch
 
-cp -v ../../../../scripts/patches/Partially-Revert-Remove-references-to-deprecated-device.patch ../ims
-cd ../ims && git am Partially-Revert-Remove-references-to-deprecated-device.patch
+cd frameworks/opt/net/wifi
+wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/wifi:Add-StaState-API.patch
+git am wifi:Add-StaState-API.patch
+
+cd ../ims
+wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/Partially-Revert-Remove-references-to-deprecated-device.patch
+git am Partially-Revert-Remove-references-to-deprecated-device.patch
+
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

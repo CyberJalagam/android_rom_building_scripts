@@ -3,7 +3,7 @@
 # 
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
-#            An Open Souce Project
+#            An Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,78 +50,86 @@ then
 	bash zip-CPH1859.sh;
 	start;
 
+
 elif [ $1 -eq 4 ]
+then
+	chmod +x zip-RMX1831.sh;
+	bash zip-RMX1831.sh;
+	start;
+	
+elif [ $1 -eq 5 ]
 then
         chmod +x bashupload.sh;
         bash bashupload.sh;
         start;
 
-elif [ $1 -eq 5 ]
+elif [ $1 -eq 6 ]
 then
 	chmod +x init-CPH1859.sh;
 	bash init-CPH1859.sh;
 	start;
 
-elif [ $1 -eq 6 ]
+elif [ $1 -eq 7 ]
 then
 	chmod +x volte.sh;
 	bash volte.sh;
 	start;
 
-elif [ $1 -eq 7 ]
+elif [ $1 -eq 8 ]
 then
 	chmod +x git.sh;
 	bash git.sh;
 	start;
 
-elif [ $1 -eq 8 ]
+elif [ $1 -eq 9 ]
 then
 	chmod +x full_build_script.sh;
 	bash full_build_script.sh;
 	start;
 
-elif [ $1 -eq 9 ]
+elif [ $1 -eq 10 ]
 then
        chmod +x build_low_spec.sh;
        bash build_low_spec.sh;
        start;
 
-elif [ $1 -eq 10 ]
+elif [ $1 -eq 11 ]
 then
        chmod +x build_high_spec.sh;
        bash build_high_spec.sh;
        start;
 
-elif [ $1 -eq 11 ]
+elif [ $1 -eq 12 ]
 then
        chmod +x sakura-CPH1859.sh;
        bash sakura-CPH1859.sh;
        start;
 
-elif [ $1 -eq 12 ]
+elif [ $1 -eq 13 ]
 then
        chmod +x sakura-RMX1831.sh;
        bash sakura-RMX1831.sh;
        start;
        
-elif [ $1 -eq 13 ]
+elif [ $1 -eq 14 ]
 then
-       echo "Type in the full directory of rom folder";
-       echo "eg, /home/cyberjalagam/sakura";
-       read ROM_DIR;
-       cat "$ROM_DIR"/out/error.log;
-       echo "====================================================================";
-       echo "Error link:";
-       cat "$ROM_DIR"/out/error.log | curl -F 'f:1=<-' ix.io;
+       chmod +x error.sh;
+       bash error.sh;
        start;
 
-elif [ $1 -eq 14 ]
+elif [ $1 -eq 15 ]
 then
        chmod +x init.sh;
        bash init.sh;
        start;
 
-elif [ $1 -eq 15 ]
+elif [ $1 -eq 16 ]
+then
+       chmod +x sefix.sh;
+       bash sefix.sh
+       start;
+
+elif [ $1 -eq 17 ]
 then
 	exit;
 fi
@@ -139,18 +147,20 @@ echo -e "${YELLOW}"
 echo "1  -- Build ENV necessary packages"
 echo "2  -- All env essentials- env and git"
 echo "3  -- Replace boot for CPH1859"
-echo "4  -- Upload rom to bashupload"
-echo "5  -- Initialize device configuration for CPH1859"
-echo "6  -- Initialize VoLTE changes for MediaTek"
-echo "7  -- Setup git"
-echo "8  -- Full rom building script"
-echo "9  -- Build with low specs"
-echo "10 -- Build with normal specs"
-echo "11 -- Build ProjectSakura for CPH1859"
-echo "12 -- Build ProjectSakura for RMX1831"
-echo "13 -- Show build error"
-echo "14 -- Initialize device repos"
-echo "15 -- Exit"
+echo "4  -- Replace boot for RMX1831"
+echo "5  -- Upload rom to bashupload"
+echo "6  -- Initialize device configuration for CPH1859"
+echo "7  -- Initialize VoLTE changes for MediaTek"
+echo "8  -- Setup git"
+echo "9  -- Full rom building script"
+echo "10  -- Build with low specs"
+echo "11 -- Build with normal specs"
+echo "12 -- Build ProjectSakura for CPH1859"
+echo "13 -- Build ProjectSakura for RMX1831"
+echo "14 -- Show build error"
+echo "15 -- Initialize device repos"
+echo "16 -- SeFIX for CPH1859 & RMX1831"
+echo "17 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;

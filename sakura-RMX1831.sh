@@ -47,8 +47,9 @@ repo sync --current-branch --force-sync --no-clone-bundle --no-tags --optimized-
 
 # Revert an selinux commit
 echo -e "\n======================== SeFix ============================\n"
-cp -v ../scripts/patches/Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch external/selinux
-cd external/selinux && git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
+cd external/selinux
+wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/Revert-libsepol:Make-an-unknown-permission-an-error-in-CIL.patch
+git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
 
 # Device tree
 echo -e "\n================== Clonning device tree ==================\n"
