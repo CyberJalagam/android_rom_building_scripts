@@ -14,6 +14,8 @@
 
 STATUS: STABLE
 
+WARNING! I Force push way too many times. good luck with your fork xD
+
 # <<<<< © RB INTERNATIONAL NETWORK™ >>>>>
 # THIS MAKES YOUR LIFE FRIKIN EASIER
 # INSTALLATION

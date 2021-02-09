@@ -99,37 +99,43 @@ then
        bash build_high_spec.sh;
        start;
 
-elif [ $1 -eq 12 ]
+elif [$1 -eg 12 ]
+then  
+       chmod +x AIO.sh;
+       bash AIO.sh;
+       start;
+
+elif [ $1 -eq 13 ]
 then
        chmod +x sakura-CPH1859.sh;
        bash sakura-CPH1859.sh;
        start;
 
-elif [ $1 -eq 13 ]
+elif [ $1 -eq 14 ]
 then
        chmod +x sakura-RMX1831.sh;
        bash sakura-RMX1831.sh;
        start;
        
-elif [ $1 -eq 14 ]
+elif [ $1 -eq 15 ]
 then
        chmod +x error.sh;
        bash error.sh;
        start;
 
-elif [ $1 -eq 15 ]
+elif [ $1 -eq 16 ]
 then
        chmod +x init.sh;
        bash init.sh;
        start;
 
-elif [ $1 -eq 16 ]
+elif [ $1 -eq 17 ]
 then
        chmod +x sefix.sh;
        bash sefix.sh
        start;
 
-elif [ $1 -eq 17 ]
+elif [ $1 -eq 18 ]
 then
 	exit;
 fi
@@ -153,14 +159,15 @@ echo "6  -- Initialize device configuration for CPH1859"
 echo "7  -- Initialize VoLTE changes for MediaTek"
 echo "8  -- Setup git"
 echo "9  -- Full rom building script"
-echo "10  -- Build with low specs"
+echo "10 -- Build with low specs"
 echo "11 -- Build with normal specs"
-echo "12 -- Build ProjectSakura for CPH1859"
-echo "13 -- Build ProjectSakura for RMX1831"
-echo "14 -- Show build error"
-echo "15 -- Initialize device repos"
-echo "16 -- SeFIX for CPH1859 & RMX1831"
-echo "17 -- Exit"
+echo "12 -- AIO Descendant, sakura, fusion, RR builds"
+echo "13 -- Build ProjectSakura for CPH1859"
+echo "14 -- Build ProjectSakura for RMX1831"
+echo "15 -- Show build error"
+echo "16 -- Initialize device repos"
+echo "17 -- SeFIX for CPH1859 & RMX1831"
+echo "18 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;

@@ -22,7 +22,7 @@ echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
 ROM_NAME=""
 CODENAME=""
-ROM_DIR_HEHE
+ROM_DIR_HEHE=""
 
 echo "enter rom short name"
 echo " eg, lineage_CPH1859.mk, so, lineage"
