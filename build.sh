@@ -99,7 +99,7 @@ then
        bash build_high_spec.sh;
        start;
 
-elif [$1 -eg 12 ]
+elif [$1 -eq 12 ]
 then  
        chmod +x AIO.sh;
        bash AIO.sh;
