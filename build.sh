@@ -59,8 +59,8 @@ then
 	
 elif [ $1 -eq 5 ]
 then
-        chmod +x bashupload.sh;
-        bash bashupload.sh;
+        chmod +x upload.sh;
+        bash upload.sh;
         start;
 
 elif [ $1 -eq 6 ]
@@ -154,7 +154,7 @@ echo "1  -- Build ENV necessary packages"
 echo "2  -- All env essentials- env and git"
 echo "3  -- Replace boot for CPH1859"
 echo "4  -- Replace boot for RMX1831"
-echo "5  -- Upload rom to bashupload"
+echo "5  -- Upload rom"
 echo "6  -- Initialize device configuration for CPH1859"
 echo "7  -- Initialize VoLTE changes for MediaTek"
 echo "8  -- Setup git"
