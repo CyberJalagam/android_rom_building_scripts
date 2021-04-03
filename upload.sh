@@ -24,7 +24,7 @@ read FILE_NAME
 
 #curl https://bashupload.com/"$FILE_NAME" --data-binary @"$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
 curl -sL https://git.io/file-transfer | sh
-./transfer "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+./transfer wet "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
 echo "Operation sucessful!, file has been uploaded"
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
