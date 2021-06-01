@@ -1,4 +1,4 @@
-  #!/bin/bash
+#!/bin/bash
 #
 # This script is personal
 # Make sure to make necessary changes
