@@ -52,6 +52,8 @@ git config --global alias.co checkout
 git config --global alias.rv revert
 git config --global alias.b branch
 git config --global alias.s status
+git config --global alias.cpc "cherry-pick --continue"
+git config --global alias.cpa "cherry-pick --abort"
 
 echo Now u can use shortcuts for git commands!
 echo "For "git cherry-pick" u can use  "git cp""
@@ -62,5 +64,7 @@ echo "For "git checkout"    u can use  "git co""
 echo "For "git revert"      u can use  "git rv""
 echo "For "git branch"      u can use  "git b""
 echo "For "git status"      u can use  "git s""
+echo "For "git cherry-pick --continue"  u can use  "git cpc""
+echo "For "git cherry-pick --abort"     u can use  "git cpa""
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
