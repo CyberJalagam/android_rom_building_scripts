@@ -1,5 +1,8 @@
 #!/bin/bash
-# 
+#
+# This script is personal
+# Make sure to make necessary changes
+#
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
 #            An Open Source Project
@@ -19,26 +22,14 @@
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-ROM_DIR=""
-ROM_NAME=""
+echo -e "\n Adding your github credentials\n"
 
-echo "enter full rom directory"
-echo "eg, /home/cyberjalagam/sakura"
-read ROM_DIR
+git config --global user.email "${{ secrets.TOKEN }}"
+git config --global user.name "${{ secrets.USERNAME }}"
+git config --global credential.helper store
+echo "https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com" > ~/.git-credentials
 
-cd "$ROM_DIR"/out/target/product/RMX1831
+echo -e "\n Credentials added!\n"
 
-ls
-echo "Enter FULL rom name including extension: " 
-read ROM_NAME
 
-mkdir working-dir
-cp -v "$ROM_NAME" working-dir
-cd working-dir && unzip "$ROM_NAME"
-rm -rf "$ROM_NAME"
-rm -rf boot.img
-wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/prebuilt-device-specific/RMX1831/boot.img
-zip -r "$ROM_NAME" ./*
-echo "Operation sucessful!, Full path of the modified rom given below"
-realpath "$ROM_NAME"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

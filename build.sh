@@ -46,96 +46,89 @@ then
 
 elif [ $1 -eq 3 ]
 then
-	chmod +x zip-CPH1859.sh;
-	bash zip-CPH1859.sh;
-	start;
-
-
-elif [ $1 -eq 4 ]
-then
-	chmod +x zip-RMX1831.sh;
-	bash zip-RMX1831.sh;
-	start;
-	
-elif [ $1 -eq 5 ]
-then
         chmod +x upload.sh;
         bash upload.sh;
         start;
 
-elif [ $1 -eq 6 ]
+elif [ $1 -eq 4 ]
 then
 	chmod +x init-CPH1859.sh;
 	bash init-CPH1859.sh;
 	start;
 
-elif [ $1 -eq 7 ]
+elif [ $1 -eq 5 ]
 then
 	chmod +x volte.sh;
 	bash volte.sh;
 	start;
 
-elif [ $1 -eq 8 ]
+elif [ $1 -eq 6 ]
 then
 	chmod +x git.sh;
 	bash git.sh;
 	start;
 
-elif [ $1 -eq 9 ]
+elif [ $1 -eq 7 ]
 then
 	chmod +x full_build_script.sh;
 	bash full_build_script.sh;
 	start;
 
-elif [ $1 -eq 10 ]
+elif [ $1 -eq 8 ]
 then
        chmod +x build_low_spec.sh;
        bash build_low_spec.sh;
        start;
 
-elif [ $1 -eq 11 ]
+elif [ $1 -eq 9 ]
 then
        chmod +x build_high_spec.sh;
        bash build_high_spec.sh;
        start;
 
-elif [$1 -eq 12 ]
+elif [ $1 -eq 10 ]
 then  
        chmod +x AIO.sh;
        bash AIO.sh;
        start;
 
-elif [ $1 -eq 13 ]
+elif [ $1 -eq 11 ]
 then
        chmod +x sakura-CPH1859.sh;
        bash sakura-CPH1859.sh;
        start;
 
-elif [ $1 -eq 14 ]
+elif [ $1 -eq 12 ]
 then
        chmod +x sakura-RMX1831.sh;
        bash sakura-RMX1831.sh;
        start;
        
-elif [ $1 -eq 15 ]
+elif [ $1 -eq 13 ]
 then
        chmod +x error.sh;
        bash error.sh;
        start;
 
-elif [ $1 -eq 16 ]
+elif [ $1 -eq 14 ]
 then
        chmod +x init.sh;
        bash init.sh;
        start;
 
-elif [ $1 -eq 17 ]
+elif [ $1 -eq 15 ]
 then
        chmod +x sefix.sh;
        bash sefix.sh
        start;
 
-elif [ $1 -eq 18 ]
+elif [ $1 -eq 16 ]
+then
+       chmod +x git-creds.sh;
+       bash git-creds.sh
+       start;
+
+elif [ $1 -eq 17 ]
 then
 	exit;
 fi
@@ -152,22 +145,21 @@ sleep 2;
 echo -e "${YELLOW}"
 echo "1  -- Build ENV necessary packages"
 echo "2  -- All env essentials- env and git"
-echo "3  -- Replace boot for CPH1859"
-echo "4  -- Replace boot for RMX1831"
-echo "5  -- Upload rom"
-echo "6  -- Initialize device configuration for CPH1859"
-echo "7  -- Initialize VoLTE changes for MediaTek"
-echo "8  -- Setup git"
-echo "9  -- Full rom building script"
-echo "10 -- Build with low specs"
-echo "11 -- Build with normal specs"
-echo "12 -- AIO Descendant, sakura, fusion, RR builds"
-echo "13 -- Build ProjectSakura for CPH1859"
-echo "14 -- Build ProjectSakura for RMX1831"
-echo "15 -- Show build error"
-echo "16 -- Initialize device repos"
-echo "17 -- SeFIX for CPH1859 & RMX1831"
-echo "18 -- Exit"
+echo "3  -- Upload rom"
+echo "4  -- Initialize device configuration for CPH1859"
+echo "5  -- Initialize VoLTE changes for MediaTek"
+echo "6  -- Setup git"
+echo "7  -- Full rom building script"
+echo "8  -- Build with low specs"
+echo "9  -- Build with normal specs"
+echo "10 -- AIO Descendant, sakura, fusion, RR builds"
+echo "11 -- Build ProjectSakura for CPH1859"
+echo "12 -- Build ProjectSakura for RMX1831"
+echo "13 -- Show build error"
+echo "14 -- Initialize device repos"
+echo "15 -- SeFIX for CPH1859 & RMX1831"
+echo "16 -- Setup Credentials for git"
+echo "17 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;
