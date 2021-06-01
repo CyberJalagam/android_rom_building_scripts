@@ -31,6 +31,14 @@ git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts &
 ```
 
 
+Setup secrets in Repo settings --> Secrets
+```text
+TOKEN :- Your github personal access token, from account settings > developer settings > personal access token
+(Select everything while creating the token)
+
+USERNAME :- Your github username
+```
+
 If you like this Repo, Please click the :star:
 
 # Contribute

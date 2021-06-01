@@ -124,6 +124,12 @@ then
 
 elif [ $1 -eq 16 ]
 then
+       chmod +x git-creds.sh;
+       bash git-creds.sh
+       start;
+
+elif [ $1 -eq 17 ]
+then
 	exit;
 fi
 }
@@ -152,7 +158,8 @@ echo "12 -- Build ProjectSakura for RMX1831"
 echo "13 -- Show build error"
 echo "14 -- Initialize device repos"
 echo "15 -- SeFIX for CPH1859 & RMX1831"
-echo "16 -- Exit"
+echo "16 -- Setup Credentials for git"
+echo "17 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;
