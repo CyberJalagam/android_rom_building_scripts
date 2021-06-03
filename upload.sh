@@ -23,8 +23,10 @@ echo "ProjectSakura-4.R-CPH1859-696969.zip"
 read FILE_NAME
 
 #curl https://bashupload.com/"$FILE_NAME" --data-binary @"$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-curl -sL https://git.io/file-transfer | sh
-./transfer gof "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+#curl -sL https://git.io/file-transfer | sh
+#./transfer gof "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+gdrive upload "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+
 echo "Operation sucessful!, file has been uploaded"
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
