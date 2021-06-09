@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
@@ -20,32 +19,15 @@
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-ROM_NAME=""
-CODENAME=""
-ROM_DIR_HEHE
+ROM_DIR=""
 
-echo "enter rom short name"
-echo " eg, lineage_CPH1859.mk, so, lineage"
-read ROM_NAME
-
-echo "enter full rom directory"
+echo "Enter full rom directory"
 echo "eg, /home/cyberjalagam/potato"
-read ROM_DIR_HEHE
+read ROM_DIR
+cd "$ROM_DIR"
 
-
-echo "enter codename"
-read CODENAME
-
-cd "$ROM_DIR_HEHE"
-
-# Metalava
-cd build/soong
-wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
-git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+# Apply obb patch
+echo -e "\n======================== Obb patch ============================\n"
+cd frameworks/native && git fetch https://github.com/phhusson/platform_frameworks_native android-11.0.0_r28-phh && git cherry-pick cc94e422c0a8b2680e7f9cfc391b2b03a56da765
 cd ../../
-#Metalava
-
-source build/envsetup.sh
-lunch "$ROM_NAME"_"$CODENAME"-userdebug
-mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && mka bacon -j$(nproc --all)
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

@@ -39,90 +39,74 @@ then
 elif [ $1 -eq 2 ]
 then
 	chmod +x env.sh;
-        chmod +x git.sh;
-        ./git.sh;
-        ./env.sh;
-        start;
+       chmod +x git.sh;
+       ./git.sh;
+       ./env.sh;
+       start;
 
 elif [ $1 -eq 3 ]
-then
-        chmod +x upload.sh;
-        bash upload.sh;
-        start;
-
-elif [ $1 -eq 4 ]
-then
-	chmod +x init-CPH1859.sh;
-	bash init-CPH1859.sh;
-	start;
-
-elif [ $1 -eq 5 ]
-then
-	chmod +x volte.sh;
-	bash volte.sh;
-	start;
-
-elif [ $1 -eq 6 ]
 then
 	chmod +x git.sh;
 	bash git.sh;
 	start;
 
-elif [ $1 -eq 7 ]
+elif [ $1 -eq 4 ]
 then
-	chmod +x full_build_script.sh;
-	bash full_build_script.sh;
-	start;
+       chmod +x sync.sh;
+       bash sync.sh;
+       start;       
 
-elif [ $1 -eq 8 ]
-then
-       chmod +x build_low_spec.sh;
-       bash build_low_spec.sh;
-       start;
-
-elif [ $1 -eq 9 ]
-then
-       chmod +x build_high_spec.sh;
-       bash build_high_spec.sh;
-       start;
-
-elif [ $1 -eq 10 ]
-then  
-       chmod +x AIO.sh;
-       bash AIO.sh;
-       start;
-
-elif [ $1 -eq 11 ]
-then
-       chmod +x sakura-CPH1859.sh;
-       bash sakura-CPH1859.sh;
-       start;
-
-elif [ $1 -eq 12 ]
-then
-       chmod +x sakura-RMX1831.sh;
-       bash sakura-RMX1831.sh;
-       start;
-       
-elif [ $1 -eq 13 ]
-then
-       chmod +x error.sh;
-       bash error.sh;
-       start;
-
-elif [ $1 -eq 14 ]
+elif [ $1 -eq 5 ]
 then
        chmod +x init.sh;
        bash init.sh;
        start;
 
-elif [ $1 -eq 15 ]
+elif [ $1 -eq 6 ]
+then
+       chmod +x build_rom.sh;
+       bash build_rom.sh;
+       start;
+       
+elif [ $1 -eq 7 ]
+then
+       chmod +x error.sh;
+       bash error.sh;
+       start;
+
+elif [ $1 -eq 8 ]
+then
+        chmod +x upload.sh;
+        bash upload.sh;
+        start;
+
+
+elif [ $1 -eq 9 ]
+then
+	sudo apt -y install python3;
+       python3 gsi.py;
+	start;
+
+elif [ $1 -eq 10 ]
+then
+	chmod +x volte.sh;
+	bash volte.sh;
+	start;
+
+
+elif [ $1 -eq 11 ]
 then
        chmod +x sefix.sh;
        bash sefix.sh
        start;
 
-elif [ $1 -eq 16 ]
+elif [ $1 -eq 12 ]
+then
+       chmod +x obb.sh;
+       bash obb.sh
+       start;
+
+elif [ $1 -eq 13 ]
 then
 	exit;
 fi
@@ -138,21 +122,18 @@ echo "----------------------------------------"
 sleep 2;
 echo -e "${YELLOW}"
 echo "1  -- Build ENV necessary packages"
-echo "2  -- All env essentials- env and git"
-echo "3  -- Upload rom"
-echo "4  -- Initialize device configuration for CPH1859"
-echo "5  -- Initialize VoLTE changes for MediaTek"
-echo "6  -- Setup git"
-echo "7  -- Full rom building script"
-echo "8  -- Build with low specs"
-echo "9  -- Build with normal specs"
-echo "10 -- AIO Descendant, sakura, fusion, RR builds"
-echo "11 -- Build ProjectSakura for CPH1859"
-echo "12 -- Build ProjectSakura for RMX1831"
-echo "13 -- Show build error"
-echo "14 -- Initialize device repos"
-echo "15 -- SeFIX for CPH1859 & RMX1831"
-echo "16 -- Exit"
+echo "2  -- All env essentials (env and git)"
+echo "3  -- Setup git"
+echo "4  -- Sync a rom source"
+echo "5  -- Initialize device repos"
+echo "6  -- Build rom"
+echo "7  -- Show build error"
+echo "8  -- Upload rom"
+echo "9  -- Build sGSI"
+echo "10 -- Apply VoLTE patches for MediaTek"
+echo "11 -- Fix selinux for realme mtk devices"
+echo "12 -- Apply changes to make obb visible"
+echo "13 -- Exit"
 echo -e "${RST}"
 read -p "Enter choice: " n;
 options $n;

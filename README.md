@@ -12,7 +12,7 @@
 <p align="center"><i>Loved the projectS? Please visit our <a href="https://rbinternationalnet.wixsite.com/rbintnet">Website</a></i></p>
 <br>
 
-STATUS: STABLE
+STATUS: BETA
 
 WARNING! I Force push way too many times. good luck with your fork xD
 
@@ -28,6 +28,12 @@ git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts &
 For peeps using screen while compiling,
 ```
 git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x build.sh && screen -LS script bash build.sh
+```
+## Device specific environments
+
+~// Realme 1 | CPH1859 //~
+```
+git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && bash device-specific/CPH1859/setup.sh
 ```
 
 

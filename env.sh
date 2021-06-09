@@ -20,8 +20,6 @@
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-chmod +x gdrive
-sudo install gdrive /usr/local/bin/gdrive
 wget https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh
 bash android_build_env.sh
 sudo add-apt-repository -y ppa:deadsnakes/ppa
