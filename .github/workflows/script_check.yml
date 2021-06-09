@@ -1,0 +1,36 @@
+
+name: Android rom 
+
+on: [push]
+    
+env:
+ username: CyberJalagam
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@main
+
+       - name: initialization
+         continue-on-error: true
+         run: |
+           sudo apt -y install python3
+           sudo apt -y install shellcheck
+
+       - name: Quality control
+         run: |
+           sudo bash build_rom.sh
+           sudo bash env.sh
+           sudo bash build.sh
+           sudo bash error.sh
+           sudo bash git.sh
+           sudo bash init.sh
+           python3 -m py_compile gsi.py
+           sudo bash obb.sh
+           sudo bash sefix.sh
+           sudo bash sync.sh
+           sudo bash upload.sh
+           sudo bash volte.sh
+           
