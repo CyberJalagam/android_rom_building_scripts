@@ -20,5 +20,5 @@ jobs:
            sudo apt -y install shellcheck
 
        - name: Validate syntax
-         run: bash -n *.sh
+         run: bash -n *.sh && python3 -m py_compile gsi.py
            
