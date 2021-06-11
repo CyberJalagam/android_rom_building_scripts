@@ -32,6 +32,10 @@ WHITE='\033[0;37m'        # White
 
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
+
+echo -r "${RED}"
+echo " ~// Rom error reading Script //~"
+
 echo -e "${RESET}"
 
 if [ ! -d go1.16.5.linux-amd64.tar.gz ]

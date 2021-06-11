@@ -16,11 +16,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+RESET='\033[0m'       # Text Reset
+BLACK='\033[0;30m'        # Black
+RED='\033[0;31m'          # Red
+GREEN='\033[0;32m'        # Green
+YELLOW='\033[0;33m'       # Yellow
+BLUE='\033[0;34m'         # Blue
+PURPLE='\033[0;35m'       # Purple
+CYAN='\033[0;36m'         # Cyan
+WHITE='\033[0;37m'        # White
 
+echo -e "${CYAN}"
+echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 ROM_DIR=""
 
+echo -e "${RED}"
 echo " ~// Build environment for Realme 1 //~"
+echo -e "${YELLOW}"
 echo "Enter full rom directory"
+echo -e "${RESET}"
 read ROM_DIR
 
 cd "$ROM_DIR"
@@ -42,3 +56,4 @@ cd frameworks/opt/net/ims && git fetch "http://gerrit.pixysos.com/PixysOS/framew
 
 # Go to initial directory
 cd ../../../../
+echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

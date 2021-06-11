@@ -36,6 +36,9 @@ BRANCH_NAME=""
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -r "${RED}"
+echo " ~// Rom syncing Script //~"
+
 echo -e "${YELLOW}"
 echo "Enter full directory of rom folder"
 echo -e "${RESET}"
@@ -64,14 +67,6 @@ echo -e "${YELLOW}"
 read -p "y or n " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-    repo init --depth=1 -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
-    echo -e "${GREEN}"
-    echo "===================================="
-    echo " Syncing repo. This may take a while depending on your internet speed : "
-    echo "===================================="
-    echo -e "${RESET}"
-    repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
-else
    repo init -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
    echo -e "${GREEN}"
    echo "===================================="
@@ -79,6 +74,14 @@ else
    echo "===================================="
    echo -e "${RESET}"
    repo sync --force-sync -j$(nproc --all)
+else
+  repo init --depth=1 -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
+  echo -e "${GREEN}"
+  echo "===================================="
+  echo " Syncing repo. This may take a while depending on your internet speed : " 
+  echo "===================================="
+  echo -e "${RESET}"
+  repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
 fi   
 
 echo -e "${CYAN}"

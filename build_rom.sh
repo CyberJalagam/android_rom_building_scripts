@@ -31,6 +31,8 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -e "${RED}"
+echo " ~// Rom building script //~"
 
 ROM_NAME=""
 CODENAME=""
@@ -88,7 +90,10 @@ echo -e "${RESET}"
 read -p "y or n " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-
+  . build/envsetup.sh
+  lunch "$ROM_NAME"_"$CODENAME"-"$VARIENT"
+  mka bacon -j$(nproc --all)
+else
   # Metalava
   cd build/soong
   wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
@@ -101,10 +106,7 @@ then
   mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && mka bacon -j$(nproc --all)
 
 
-else
-  . build/envsetup.sh
-  lunch "$ROM_NAME"_"$CODENAME"-"$VARIENT"
-  mka bacon -j$(nproc --all)
+
 fi 
 
 echo -e "${CYAN}"

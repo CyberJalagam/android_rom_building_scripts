@@ -31,7 +31,7 @@ git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts &
 ```
 ## Device specific environments
 
-~// Realme 1 | CPH1859 //~
+-// Realme 1 | CPH1859 //-
 ```
 git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && bash device-specific/CPH1859/setup.sh
 ```

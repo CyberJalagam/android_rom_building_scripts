@@ -30,6 +30,9 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -r "${RED}"
+echo " ~// Rom uploading Script //~"
+
 FILE_NAME=""
 ROM_DIR=""
 CODENAME=""
@@ -70,13 +73,13 @@ echo -e "${RESET}"
 read -p " y or n " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-  gdrive upload "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-else
   if [ ! -d transfer ]
   then
   curl -sL https://git.io/file-transfer | sh
   fi
- ./transfer wet "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+  ./transfer wet "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+else
+  gdrive upload "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
 fi 
   
 

@@ -30,6 +30,9 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -r "${RED}"
+echo " ~// Device trees initialization Script //~"
+
 DEVICE_TREE=""
 DEVICE_TREE_BRANCH=""
 

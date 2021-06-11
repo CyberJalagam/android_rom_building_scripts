@@ -30,6 +30,9 @@ WHITE='\033[0;37m'        # White
 
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
+
+echo -r "${RED}"
+echo " ~// Build environment Script //~"
 echo -e "${RESET}"
 
 wget https://raw.githubusercontent.com/akhilnarang/scripts/master/setup/android_build_env.sh

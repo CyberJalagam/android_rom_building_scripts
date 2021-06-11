@@ -30,6 +30,9 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -r "${RED}"
+echo " ~// Rom OBB Patching Script //~"
+
 ROM_DIR=""
 
 echo -e "${YELLOW}"
