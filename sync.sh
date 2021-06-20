@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # 
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
@@ -28,64 +29,60 @@ CYAN='\033[0;36m'         # Cyan
 WHITE='\033[0;37m'        # White
 
 echo -e "${CYAN}"
+
+DIR=""
+ROM_MANIFEST=""
+BRANCH_NAME=""
+
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
 echo -e "${RED}"
-echo " ~// Rom uploading Script //~"
+echo " ~// Rom syncing Script //~"
 
-FILE_NAME=""
-ROM_DIR=""
-CODENAME=""
+echo -e "${YELLOW}"
+echo "Enter full directory of rom folder"
+echo -e "${RESET}"
+read DIR
 
+cd "$DIR"
+
+echo -e "${YELLOW}"
+echo "Enter the link of rom manifest: "
+echo -e "${RESET}"
+read ROM_MANIFEST
+echo -e "${YELLOW}"
+echo "===================================="
+echo "Enter the branch: "
+echo -e "${RESET}"
+read BRANCH_NAME
+echo -e "${YELLOW}"
+echo "===================================="
+
+echo "Do you need an optimised sync?"
+echo "This will shallow clone all repos"
 echo -e "${GREEN}"
-chmod +x assets/gdrive
-sudo install assets/gdrive /usr/local/bin/gdrive
-
-echo -e "${YELLOW}"
+echo "Pressing n will do a normal sync"
 echo "===================================="
-echo "Enter full rom directory"
-echo "eg, /home/jaishnavprasad/sakura"
-echo -e "${RESET}"
-read ROM_DIR
-
 echo -e "${YELLOW}"
-echo "===================================="
-echo "Enter codename"
-echo "eg, begonia, CPH1859 etc..."
-echo -e "${RESET}"
-read CODENAME
-
-cd "$ROM_DIR"/out/target/product/"$CODENAME"
-ls
-echo -e "${YELLOW}"
-echo "=============================================================="
-echo "=============================================================="
-echo "Enter the rom name"
-echo -e "${RESET}"
-read FILE_NAME
-
-echo -e "${YELLOW}"
-echo "===================================="
-echo " Press y to use gdrive "
-echo " Press n to use we transfer"
-echo "===================================="
-echo -e "${RESET}"
-read -p " y or n " -n 1 -r
+read -p "y or n " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-  if [ ! -d transfer ]
-  then
-  curl -sL https://git.io/file-transfer | sh
-  fi
-  ./transfer wet "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+   repo init -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
+   echo -e "${GREEN}"
+   echo "===================================="
+   echo " Syncing repo. This may take a while depending on your internet speed : "
+   echo "===================================="
+   echo -e "${RESET}"
+   repo sync --force-sync -j$(nproc --all)
 else
-  gdrive upload "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-fi 
-  
-
-#curl https://bashupload.com/"$FILE_NAME" --data-binary @"$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-echo -e "${GREEN}"
-echo "Operation sucessful!, file has been uploaded"
+  repo init --depth=1 -u "$ROM_MANIFEST" -b "$BRANCH_NAME"
+  echo -e "${GREEN}"
+  echo "===================================="
+  echo " Syncing repo. This may take a while depending on your internet speed : " 
+  echo "===================================="
+  echo -e "${RESET}"
+  repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
+fi   
 
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

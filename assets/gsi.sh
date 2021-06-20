@@ -13,4 +13,4 @@ read ROM_NAME
 
 echo "Building GSI"
 
-sudo ./ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME
+sudo bash gsi-working-dir/ErfanGSIs/url2GSI.sh $ROM_URL $ROM_NAME

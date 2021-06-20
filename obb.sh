@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
@@ -32,28 +31,23 @@ echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
 echo -e "${RED}"
-echo " ~// Volte patching Script //~"
+echo " ~// Rom OBB Patching Script //~"
 
 ROM_DIR=""
 
 echo -e "${YELLOW}"
-echo "enter full rom directory"
+echo "Enter full rom directory"
 echo "eg, /home/cyberjalagam/potato"
 echo -e "${RESET}"
 read ROM_DIR
-
 cd "$ROM_DIR"
 
-
-# some really necessary patches for IMS to work
-cd frameworks/base && git fetch https://github.com/Corvus-R/android_frameworks_base-staging 11 && git cherry-pick a2c6a3997cdb4598c654b0dea6824286a5a3f727
+echo -e "${YELLOW}"
+# Apply obb patch
+echo -e "\n======================== Obb patch ============================\n"
+echo -e "${RESET}"
+cd frameworks/native && git fetch https://github.com/phhusson/platform_frameworks_native android-11.0.0_r28-phh && git cherry-pick cc94e422c0a8b2680e7f9cfc391b2b03a56da765
 cd ../../
-cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
-cd ../../../../
-cd frameworks/opt/net/ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
-
-# Go to initial directory
-cd ../../../../
 
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"

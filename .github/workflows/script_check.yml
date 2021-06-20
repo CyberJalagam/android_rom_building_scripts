@@ -1,0 +1,24 @@
+
+name: Android rom 
+
+on: [push]
+    
+env:
+ username: CyberJalagam
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@main
+
+       - name: initialization
+         continue-on-error: true
+         run: |
+           sudo apt -y install python3
+           sudo apt -y install shellcheck
+
+       - name: Validate syntax
+         run: bash -n *.sh && python3 -m py_compile gsi.py
+           

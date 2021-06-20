@@ -20,22 +20,49 @@
 # limitations under the License.
 #
 
+RESET='\033[0m'       # Text Reset
+BLACK='\033[0;30m'        # Black
+RED='\033[0;31m'          # Red
+GREEN='\033[0;32m'        # Green
+YELLOW='\033[0;33m'       # Yellow
+BLUE='\033[0;34m'         # Blue
+PURPLE='\033[0;35m'       # Purple
+CYAN='\033[0;36m'         # Cyan
+WHITE='\033[0;37m'        # White
+
+echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
+echo -e "${RED}"
+echo " ~// Rom error reading Script //~"
+
+echo -e "${RESET}"
+
+if [ ! -d go1.16.5.linux-amd64.tar.gz ]
+then
 # Go
-wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz;
-sudo tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz;
+wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz;
+sudo tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz;
 export PATH=$PATH:/usr/local/go/bin;
 
 # inu
 GO111MODULE=on go get -u github.com/dogbin/inu;
 [[ $PATH != ?(*:)$HOME/go/bin?(:*) ]] && export PATH=$HOME/go/bin:$PATH;
+fi
 
+echo -e "${YELLOW}"
 echo "Type in the full directory of rom folder";
 echo "eg, /home/cyberjalagam/sakura";
+echo -e "${RESET}"
 read ROM_DIR;
 cat "$ROM_DIR"/out/error.log;
+echo -e "${YELLOW}"
 echo "====================================================================";
+echo -e "${RED}"
 echo "Error link:";
+echo -e "${RESET}"
 cat "$ROM_DIR"/out/error.log | inu;
+
+echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"   
+echo -e "${RESET}"

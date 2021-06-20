@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # 
 # Copyright (C) 2020 RB INTERNATIONAL NETWORK
 #
@@ -31,62 +32,90 @@ echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
 echo -e "${RED}"
-echo " ~// Rom uploading Script //~"
+echo " ~// Rom building script //~"
 
-FILE_NAME=""
-ROM_DIR=""
+ROM_NAME=""
 CODENAME=""
+ROM_DIR_HEHE=""
+VARIENT=""
 
-echo -e "${GREEN}"
-chmod +x assets/gdrive
-sudo install assets/gdrive /usr/local/bin/gdrive
+if [ `whoami` == 'root' ]
+  then
+   echo -e "${YELLOW}" 
+   echo "Please don't run this script as a root user"
+   echo -e "${RED}"
+   echo "Exiting..."
+	 exit
+fi
 
-echo -e "${YELLOW}"
-echo "===================================="
-echo "Enter full rom directory"
-echo "eg, /home/jaishnavprasad/sakura"
 echo -e "${RESET}"
-read ROM_DIR
+
+export USE_CCACHE=1
+export USE_CCACHE_EXEC=$(command -v ccache)
+ccache -M 50G
+export ANDROID_JACK_VM_ARGS="-Xmx15g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+
+echo -e "${YELLOW}"
+echo "enter full rom directory"
+echo "eg, /home/cyberjalagam/potato"
+echo -e "${RESET}"
+read ROM_DIR_HEHE
 
 echo -e "${YELLOW}"
 echo "===================================="
-echo "Enter codename"
-echo "eg, begonia, CPH1859 etc..."
+echo "enter rom short name"
+echo " eg, lineage_CPH1859.mk, so, lineage"
+echo -e "${RESET}"
+read ROM_NAME
+
+echo -e "${YELLOW}"
+echo "===================================="
+echo "enter codename"
 echo -e "${RESET}"
 read CODENAME
 
-cd "$ROM_DIR"/out/target/product/"$CODENAME"
-ls
 echo -e "${YELLOW}"
-echo "=============================================================="
-echo "=============================================================="
-echo "Enter the rom name"
+echo "===================================="
+echo "enter the build varient"
+echo "eg, eng | user | userdebug"
 echo -e "${RESET}"
-read FILE_NAME
+read VARIENT
 
+cd "$ROM_DIR_HEHE"
 echo -e "${YELLOW}"
 echo "===================================="
-echo " Press y to use gdrive "
-echo " Press n to use we transfer"
+echo "Do you have a machine with low specs?"
 echo "===================================="
 echo -e "${RESET}"
-read -p " y or n " -n 1 -r
+read -p "y or n " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-  if [ ! -d transfer ]
-  then
-  curl -sL https://git.io/file-transfer | sh
-  fi
-  ./transfer wet "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
+  . build/envsetup.sh
+  lunch "$ROM_NAME"_"$CODENAME"-"$VARIENT"
+  mka bacon -j$(nproc --all)
 else
-  gdrive upload "$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-fi 
-  
+  # Metalava
+  cd build/soong
+  wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+  git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+  cd ../../
+  #Metalava
 
-#curl https://bashupload.com/"$FILE_NAME" --data-binary @"$ROM_DIR"/out/target/product/"$CODENAME"/"$FILE_NAME"
-echo -e "${GREEN}"
-echo "Operation sucessful!, file has been uploaded"
+  . build/envsetup.sh
+  lunch "$ROM_NAME"_"$CODENAME"-"$VARIENT"
+  mka api-stubs-docs && mka hiddenapi-lists-docs && mka system-api-stubs-docs && mka test-api-stubs-docs && mka bacon -j$(nproc --all)
+
+
+
+fi 
 
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 echo -e "${RESET}"
+
+
+
+
+
+
+
