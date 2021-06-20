@@ -31,7 +31,7 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-echo -r "${RED}"
+echo -e "${RED}"
 echo " ~// Build environment Script //~"
 echo -e "${RESET}"
 

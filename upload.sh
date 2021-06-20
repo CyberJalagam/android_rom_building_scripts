@@ -30,7 +30,7 @@ WHITE='\033[0;37m'        # White
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-echo -r "${RED}"
+echo -e "${RED}"
 echo " ~// Rom uploading Script //~"
 
 FILE_NAME=""
@@ -38,7 +38,7 @@ ROM_DIR=""
 CODENAME=""
 
 echo -e "${GREEN}"
-chmod +x gdrive
+chmod +x assets/gdrive
 sudo install assets/gdrive /usr/local/bin/gdrive
 
 echo -e "${YELLOW}"

@@ -36,7 +36,7 @@ BRANCH_NAME=""
 
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 
-echo -r "${RED}"
+echo -e "${RED}"
 echo " ~// Rom syncing Script //~"
 
 echo -e "${YELLOW}"
