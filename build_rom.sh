@@ -95,9 +95,7 @@ then
   mka bacon -j$(nproc --all)
 else
   # Metalava
-  cd build/soong
-  wget https://raw.githubusercontent.com/CyberJalagam/android_rom_building_scripts/master/patches/Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
-  git am Specified-the-heap-size-with-the-flag-to-fix-out-of-memory-error.patch
+  cd build/soong && git fetch --depth=1 https://github.com/nparashar150/android_build_soong c8ba7af59acda55a16835727d1d351b8d58a5ca4 && git cherry-pick FETCH_HEAD
   cd ../../
   #Metalava
 

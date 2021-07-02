@@ -46,7 +46,7 @@ echo -e "${YELLOW}"
 # Apply obb patch
 echo -e "\n======================== Obb patch ============================\n"
 echo -e "${RESET}"
-cd frameworks/native && git fetch https://github.com/phhusson/platform_frameworks_native android-11.0.0_r28-phh && git cherry-pick cc94e422c0a8b2680e7f9cfc391b2b03a56da765
+cd frameworks/native && git fetch --depth=1 https://github.com/phhusson/platform_frameworks_native cc94e422c0a8b2680e7f9cfc391b2b03a56da765 && git cherry-pick FETCH_HEAD
 cd ../../
 
 echo -e "${CYAN}"

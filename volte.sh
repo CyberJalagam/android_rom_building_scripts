@@ -46,9 +46,9 @@ cd "$ROM_DIR"
 
 
 # some really necessary patches for IMS to work
-cd frameworks/base && git fetch https://github.com/Corvus-R/android_frameworks_base-staging 11 && git cherry-pick a2c6a3997cdb4598c654b0dea6824286a5a3f727
+cd frameworks/base && git fetch --depth=1 https://github.com/Corvus-R/android_frameworks_base-staging a2c6a3997cdb4598c654b0dea6824286a5a3f727 && git cherry-pick FETCH_HEAD
 cd ../../
-cd frameworks/opt/net/wifi && git fetch https://github.com/PotatoProject/frameworks_opt_net_wifi dumaloo-release && git cherry-pick 88773b8285d7962d0add6a9f55c63fc045beb677
+cd frameworks/opt/net/wifi && git fetch --depth=1 https://github.com/PotatoProject/frameworks_opt_net_wifi 88773b8285d7962d0add6a9f55c63fc045beb677 && git cherry-pick FETCH_HEAD
 cd ../../../../
 cd frameworks/opt/net/ims && git fetch "http://gerrit.pixysos.com/PixysOS/frameworks_opt_net_ims" refs/changes/65/4665/1 && git cherry-pick FETCH_HEAD
 

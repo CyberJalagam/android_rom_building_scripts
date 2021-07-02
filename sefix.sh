@@ -47,9 +47,8 @@ echo -e "${YELLOW}"
 echo -e "\n======================== SeFix ============================\n"
 cd external/selinux
 echo -e "${RESET}" 
-wget https://github.com/CyberJalagam/android_rom_building_scripts/raw/master/patches/Revert-libsepol:Make-an-unknown-permission-an-error-in-CIL.patch
-git am Revert-"libsepol:Make-an-unknown-permission-an-error-in-CIL".patch 
-
+git fetch --depth=1 https://github.com/PotatoProject/external_selinux 4b8de2fd5a38dd2fb477fd79cb85a1b0a33f745a
+git cherry-pick FETCH_HEAD
 echo -e "${CYAN}"
 echo "<<<<< © RB INTERNATIONAL NETWORK™ >>>>>"
 echo -e "${RESET}"
