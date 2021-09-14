@@ -22,18 +22,18 @@ WARNING! I Force push way too many times. good luck with your fork xD
 
 Easy to use,
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x build.sh && bash build.sh
+git clone https://github.com/CyberJalagam/scripts && cd scripts && chmod +x build.sh && bash build.sh
 ```
 
 For peeps using screen while compiling,
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && chmod +x build.sh && screen -LS script bash build.sh
+git clone https://github.com/CyberJalagam/scripts && cd scripts && chmod +x build.sh && screen -LS script bash build.sh
 ```
 ## Device specific environments
 
 -// Realme 1 | CPH1859 //-
 ```
-git clone https://github.com/CyberJalagam/android_rom_building_scripts scripts && cd scripts && bash device-specific/CPH1859/setup.sh
+git clone https://github.com/CyberJalagam/scripts && cd scripts && bash device-specific/CPH1859/setup.sh
 ```
 
 
